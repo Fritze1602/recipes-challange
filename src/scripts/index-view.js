@@ -1,18 +1,18 @@
 // index.html
-import {getReceipes, deleteIngredient, updateIngredient} from './receipes'
+import {getRecipes, deleteIngredient, updateIngredient} from './recipes'
 import {getFilters} from './filters'
 
 
-const receipesEl = document.querySelector('#receipes')
+const recipesEl = document.querySelector('#recipes')
 
 const renderApp = () => {
-    receipesEl.innerHTML = ''
-    const receipes = getReceipes()
+    recipesEl.innerHTML = ''
+    const recipes = getRecipes()
     const filters = getFilters()
-    const displayedReceipes = (filters.length>0) ? receipes.filter((receipe)=> receipe.name.toLowerCase().includes(filters.toLowerCase())):receipes
-    if(receipes.length > 0){
-    displayedReceipes.forEach((receipe) => {     
-        receipesEl.appendChild(generateReceipeDom(receipe.name, receipe.msg, receipe.id)) 
+    const displayedRecipes = (filters.length>0) ? recipes.filter((recipe)=> recipe.name.toLowerCase().includes(filters.toLowerCase())):recipes
+    if(recipes.length > 0){
+    displayedRecipes.forEach((recipe) => {     
+        recipesEl.appendChild(generateRecipeDom(recipe.name, recipe.msg, recipe.id)) 
     });
     }else {
         renderEmptyMsg()
@@ -22,14 +22,14 @@ const renderApp = () => {
 const renderEmptyMsg = () => {
     const msgEl = document.createElement('p')
     msgEl.classList.add('collection-item')
-    msgEl.textContent ="No receipes. Add your first ..."
-    receipesEl.append(msgEl)
+    msgEl.textContent ="No recipes. Add your first ..."
+    recipesEl.append(msgEl)
 } 
 
-const generateReceipeDom = (headingTxt, msgTxt, id) => {
-    const receipeEl = document.createElement('a')
-    receipeEl.href = `./edit.html#${id}`
-    receipeEl.classList.add('black-text','collection-item')
+const generateRecipeDom = (headingTxt, msgTxt, id) => {
+    const recipeEl = document.createElement('a')
+    recipeEl.href = `./edit.html#${id}`
+    recipeEl.classList.add('black-text','collection-item')
     //Heading settings
     const headingEl = document.createElement('h5')
     //headingEl.textContent = headingTxt.length>0 ? headingTxt : 'Edit Title'
@@ -42,12 +42,12 @@ const generateReceipeDom = (headingTxt, msgTxt, id) => {
     }
 
 
-    receipeEl.appendChild(headingEl)
+    recipeEl.appendChild(headingEl)
     //msg settings
     const msgEl = document.createElement('p')
     msgEl.textContent = msgTxt.length > 0 ? msgTxt : 'Add ingredients'
-    receipeEl.appendChild(msgEl)
-    return receipeEl
+    recipeEl.appendChild(msgEl)
+    return recipeEl
 }
 
 export {renderApp}

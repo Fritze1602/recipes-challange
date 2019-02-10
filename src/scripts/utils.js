@@ -1,4 +1,4 @@
-import {getReceipes} from './receipes'
+import {getRecipes} from './recipes'
 
 const isJson = (str) => {
     try {
@@ -9,9 +9,9 @@ const isJson = (str) => {
     return true
 }
 
-const orderReceipesByName = () => {
-    let receipes = getReceipes()
-    receipes = receipes.sort((a, b)=>{
+const orderRecipesByName = () => {
+    let recipes = getRecipes()
+    recipes = recipes.sort((a, b)=>{
        if ( a.name < b.name ) {
            return -1
        } 
@@ -22,4 +22,4 @@ const orderReceipesByName = () => {
     })
 }
 
-export { isJson, orderReceipesByName } 
+export { isJson, orderRecipesByName } 

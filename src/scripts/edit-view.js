@@ -1,26 +1,26 @@
-import { getReceipes, updateReceipeStatusMsg } from './receipes'
+import { getRecipes, updateRecipeStatusMsg } from './recipes'
 import { deleteIngredient, updateIngredient } from './ingredients'
 
-const receipeId = window.location.hash.substring(1)
-const receipes = getReceipes()
-const receipe = receipes.find((receipe) => receipe.id === receipeId)
+const recipeId = window.location.hash.substring(1)
+const recipes = getRecipes()
+const recipe = recipes.find((recipe) => recipe.id === recipeId)
 
 const h1El = document.querySelector('#title')
 const subtitleEl = document.querySelector('#subtitle')
 const headingInputEl = document.querySelector('#title-input')
-const textareaEl = document.querySelector('#receipe-head textarea')
+const textareaEl = document.querySelector('#recipe-head textarea')
 
 const initializeEditPage = () => {
-    receipe.name.length > 0 ? h1El.textContent = receipe.name : h1El.textContent = 'Edit title'
-    subtitleEl.textContent = updateReceipeStatusMsg(receipeId)
+    recipe.name.length > 0 ? h1El.textContent = recipe.name : h1El.textContent = 'Edit title'
+    subtitleEl.textContent = updateRecipeStatusMsg(recipeId)
     toggleTitleFormat()
-    headingInputEl.value = receipe.name
-    textareaEl.value = receipe.preps
+    headingInputEl.value = recipe.name
+    textareaEl.value = recipe.preps
     renderIngredients()
 }
 
 const toggleTitleFormat = () => {
-    receipe.name.length > 0 ? h1El.classList.remove('red-text', 'text-darken-3') : h1El.classList.add('red-text', 'text-darken-3')
+    recipe.name.length > 0 ? h1El.classList.remove('red-text', 'text-darken-3') : h1El.classList.add('red-text', 'text-darken-3')
 }
 
 const generateIngredientDom = (ingredientID, text, available) => {
@@ -36,8 +36,8 @@ const generateIngredientDom = (ingredientID, text, available) => {
     checkEl.classList.add("check-ingredient")
     checkEl.checked = available
     checkEl.addEventListener('change', (e) => {
-        updateIngredient(receipeId, ingredientID, { available: e.target.checked })
-        subtitleEl.textContent = updateReceipeStatusMsg(receipeId)
+        updateIngredient(recipeId, ingredientID, { available: e.target.checked })
+        subtitleEl.textContent = updateRecipeStatusMsg(recipeId)
     })
 
     wrapperEl.appendChild(checkEl)
@@ -49,15 +49,15 @@ const generateIngredientDom = (ingredientID, text, available) => {
     inputEl.placeholder = "ingredients name"
     inputEl.value = text
     inputEl.addEventListener('input', (e) => {
-        updateIngredient(receipeId, ingredientID, { name: e.target.value })
+        updateIngredient(recipeId, ingredientID, { name: e.target.value })
     })
     wrapperEl.appendChild(inputEl)
 
     removeEl.textContent = 'remove_circle_outline'
     removeEl.classList.add('material-icons')
     removeEl.addEventListener('click', (e) => {
-        deleteIngredient(receipeId, ingredientID)
-        subtitleEl.textContent = updateReceipeStatusMsg(receipeId)
+        deleteIngredient(recipeId, ingredientID)
+        subtitleEl.textContent = updateRecipeStatusMsg(recipeId)
         renderIngredients()
     })
     wrapperEl.appendChild(removeEl)
@@ -66,7 +66,7 @@ const generateIngredientDom = (ingredientID, text, available) => {
 
 const renderIngredients = () => {
     document.querySelector('#ingredients').innerHTML = ''
-    receipe.ingredients.forEach((ingredient) => {
+    recipe.ingredients.forEach((ingredient) => {
         generateIngredientDom(ingredient.id, ingredient.name, ingredient.available)
     })
 }

@@ -1,27 +1,27 @@
 import uuidv4 from 'uuid/v4'
-import {getReceipes, saveReceipes} from './receipes'
+import {getRecipes, saveRecipes} from './recipes'
 
 // ***********************
 // Ingredients **************
 // ******************************
 
-const createIngredient = (receipeId) => {
-    const receipe = getReceipes().find((item) => item.id === receipeId )
+const createIngredient = (recipeId) => {
+    const recipe = getRecipes().find((item) => item.id === recipeId )
     const id = uuidv4()
-    receipe.ingredients.push(
+    recipe.ingredients.push(
     {
         id,
         name: 'Add Ingredient',
         available: false},
     )
-    saveReceipes()
+    saveRecipes()
     return id
 }
 
 // update ingredient
-const updateIngredient = (receipeID, ingredentID, updates) => {
-    const receipe = getReceipes().find((receipe) => receipe.id === receipeID )
-    const ingredient = receipe.ingredients.find((ingredient) => ingredient.id === ingredentID)
+const updateIngredient = (recipeID, ingredentID, updates) => {
+    const recipe = getRecipes().find((recipe) => recipe.id === recipeID )
+    const ingredient = recipe.ingredients.find((ingredient) => ingredient.id === ingredentID)
     if (typeof updates.name === 'string') {
         ingredient.name = updates.name
     }
@@ -30,22 +30,22 @@ const updateIngredient = (receipeID, ingredentID, updates) => {
         ingredient.available = updates.available
     }
     
-    saveReceipes()
+    saveRecipes()
 }
 
 // delete ingredient
-const deleteIngredient = (receipeID, ingredentID) => {
-    const receipe = getReceipes().find((receipe) => receipe.id === receipeID )
-    const delId = receipe.ingredients.findIndex((ingredient) => ingredient.id === ingredentID)
+const deleteIngredient = (recipeID, ingredentID) => {
+    const recipe = getRecipes().find((recipe) => recipe.id === recipeID )
+    const delId = recipe.ingredients.findIndex((ingredient) => ingredient.id === ingredentID)
     if(delId > -1) {
-        receipe.ingredients.splice(delId, 1)
+        recipe.ingredients.splice(delId, 1)
     }
-    saveReceipes()
+    saveRecipes()
 }
 
-const getIngredient = (receipeID, ingredentID) => {
-    const receipe = getReceipes().find((receipe) => receipe.id === receipeID )
-    return receipe.ingredients.find((ingredient) => ingredient.id === ingredentID)
+const getIngredient = (recipeID, ingredentID) => {
+    const recipe = getRecipes().find((recipe) => recipe.id === recipeID )
+    return recipe.ingredients.find((ingredient) => ingredient.id === ingredentID)
 }
 
 export {createIngredient, updateIngredient, deleteIngredient , getIngredient}

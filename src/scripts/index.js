@@ -1,5 +1,5 @@
 import { setFilters } from './filters'
-import { createReceipe} from './receipes'
+import { createRecipe} from './recipes'
 import {renderApp} from './index-view'
 import '../styles/styles.scss'
 
@@ -16,8 +16,8 @@ document.querySelector('#filter').addEventListener('input', (e) => {
    renderApp()
 })
 
-document.querySelector('#add-receipe').addEventListener('click', (e) => {
-   const hash = createReceipe()
+document.querySelector('#add-recipe').addEventListener('click', (e) => {
+   const hash = createRecipe()
    location.assign(`./edit.html#${hash}`)
 })
 

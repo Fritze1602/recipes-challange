@@ -1,27 +1,27 @@
 import {initializeEditPage, generateIngredientDom, toggleTitleFormat} from './edit-view'
-import {updateReceipeHead, getReceipes, deleteReceipe, updateReceipeStatusMsg} from './receipes'
+import {updateRecipeHead, getRecipes, deleteRecipe, updateRecipeStatusMsg} from './recipes'
 import {createIngredient, updateIngredient} from './ingredients'
 import '../styles/styles.scss'
 
-const receipeId = window.location.hash.substring(1)
+const recipeId = window.location.hash.substring(1)
 const titleEl =  document.querySelector('#title')
 const subtitleEl = document.querySelector('#subtitle')
-const receipes = getReceipes()
+const recipes = getRecipes()
 
-if(receipes.findIndex((receipe) => receipe.id === receipeId ) >-1 ){
+if(recipes.findIndex((recipe) => recipe.id === recipeId ) >-1 ){
     initializeEditPage()
 } else {
     location.assign(`./index.html`)
 }
 
 document.querySelector('#title-input').addEventListener('input', (e) => {
-    updateReceipeHead(receipeId, {name: e.target.value})
+    updateRecipeHead(recipeId, {name: e.target.value})
     titleEl.textContent = e.target.value.length > 0 ? e.target.value : 'edit title'
     toggleTitleFormat()
 })
 
-document.querySelector('#receipe-head textarea').addEventListener('input', (e) => {
-    updateReceipeHead(receipeId, {
+document.querySelector('#recipe-head textarea').addEventListener('input', (e) => {
+    updateRecipeHead(recipeId, {
         preps: e.target.value
     })
 })
@@ -30,14 +30,14 @@ document.querySelector('#add-form').addEventListener('submit', (e)=>{
     e.preventDefault()
     console.log('submit fired')
     const text = e.target.elements.addNewIngredient.value
-    const ingredientId = createIngredient(receipeId)
-    updateIngredient(receipeId, ingredientId, {name: text})
+    const ingredientId = createIngredient(recipeId)
+    updateIngredient(recipeId, ingredientId, {name: text})
     generateIngredientDom(ingredientId, text)
     e.target.elements.addNewIngredient.value = ''
-    subtitleEl.textContent = updateReceipeStatusMsg(receipeId)
+    subtitleEl.textContent = updateRecipeStatusMsg(recipeId)
 })
 
 document.querySelector('#remove').addEventListener('click', (e)=>{
-    deleteReceipe(receipeId)
+    deleteRecipe(recipeId)
     location.assign('./index.html')
 })
