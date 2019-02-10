@@ -1,0 +1,56 @@
+@import "./sass/main.scss";
+
+/**** Basics ****/
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+    padding-top: 3rem;
+}
+
+/**** EDIT ****/
+#title {
+    margin-top: 0;
+}
+
+header p.nav {
+    margin-bottom: 0;
+}
+
+#ingredients input {
+    width: calc(100% - 75px);
+}
+
+#receipe-head {
+    padding-top: 2rem;
+}
+
+#ingredients {
+    padding-bottom: 2rem;
+    span {
+        top: 10px;
+    }
+    .material-icons {
+        cursor: pointer;
+    }
+}
+
+#input-add-ingredient {
+    width: calc(100% - 60px)
+}
+
+#add-form {
+    padding-top: 2rem;
+    .material-icons {
+        cursor: pointer;
+    }
+}
+
+/****** Boilerplaet *****/
+footer {
+    margin-top: 6rem;
+}

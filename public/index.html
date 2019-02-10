@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Receipes</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <a href="#" class="brand-logo">Receipes App</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m4">
+                    <label for="filter">Filter</label>
+                    <input name="filter" id="filter" type="search" placeholder="search receipes">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="collection">
+                        <div id="receipes"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="actions" class="container ">
+            <div class="row">
+                <div class="col s12">
+                    <a id="add-receipe" class="waves-effect waves-light btn">Add Receipe</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <p>Modern JS Bootcamp Chalange</p>
+
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+            </div>
+        </div>
+    </footer>
+    <script src="scripts/index-bundle.js"></script>
+</body>
+
+
+
+</html>
