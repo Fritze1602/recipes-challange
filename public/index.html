@@ -3,8 +3,10 @@
 
 <head>
     <title>Recipes</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="./styles/index.css">
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
 </head>
 
 <body>
@@ -27,6 +29,19 @@
                 <div class="col s12 m4">
                     <label for="filter">Filter</label>
                     <input name="filter" id="filter" type="search" placeholder="search recipes">
+                </div>
+                <div class="col s12 m4 ">
+                    <div class="input-field col s12">
+                        <select id="filter-select">
+                            <option value="0" disabled selected>Choose your sort</option>
+                            <option value="1">alphabetical &darr;</option>
+                            <option value="2">alphabetical &uarr;</option>
+                            <option value="3">newest first</option>
+                            <option value="4">oldest first</option>
+                            <option value="5">unsort</option>
+                        </select>
+                        <label>Sort</label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,17 +68,14 @@
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <p>Modern JS Bootcamp Challenge</p>
+                    <p>The Modern JavaScript Bootcamp Challenge / Udemy</p>
                 </div>
-                <div class="col l4 offset-l2 s12">
-                    <ul>
-
-                    </ul>
-                </div>
+               
             </div>
         </div>
         <div class="footer-copyright">
             <div class="container">
+
             </div>
         </div>
     </footer>

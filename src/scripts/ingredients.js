@@ -1,5 +1,6 @@
 import uuidv4 from 'uuid/v4'
-import {getRecipes, saveRecipes} from './recipes'
+import {getRecipes, saveRecipes, updateRecipeLastDate} from './recipes'
+import moment from 'moment'
 
 // ***********************
 // Ingredients **************
@@ -14,6 +15,7 @@ const createIngredient = (recipeId) => {
         name: 'Add Ingredient',
         available: false},
     )
+    recipe.lastChange = moment().valueOf()
     saveRecipes()
     return id
 }
@@ -26,10 +28,9 @@ const updateIngredient = (recipeID, ingredentID, updates) => {
         ingredient.name = updates.name
     }
     if (typeof updates.available === 'boolean') {
-       
         ingredient.available = updates.available
     }
-    
+    updateRecipeLastDate(recipeID)
     saveRecipes()
 }
 
@@ -40,6 +41,7 @@ const deleteIngredient = (recipeID, ingredentID) => {
     if(delId > -1) {
         recipe.ingredients.splice(delId, 1)
     }
+    updateRecipeLastDate(recipeID)
     saveRecipes()
 }
 

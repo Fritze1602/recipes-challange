@@ -1,6 +1,6 @@
 @import "./sass/myMaterialize.scss";
-
 /**** Basics ****/
+
 body {
     display: flex;
     min-height: 100vh;
@@ -12,9 +12,35 @@ main {
     padding-top: 3rem;
 }
 
+/****** Home ******/
+
+.select-wrapper{
+    margin-top: 7px;
+}
+
+#recipes{
+    .material-icons{
+        vertical-align: bottom;
+    }
+}
+h5{
+    .material-icons{
+        padding-left: 10px;
+    }
+}
 /**** EDIT ****/
+
+
 #title {
     margin-top: 0;
+}
+.rating-wrap{
+    .material-icons{
+        cursor: pointer;
+        &:first-child{
+            margin-right: 5px;
+        }
+    }
 }
 
 header p.nav {
@@ -25,12 +51,9 @@ header p.nav {
     width: calc(100% - 75px);
 }
 
-#recipe-head {
-    padding-top: 2rem;
-}
-
 #ingredients {
     padding-bottom: 2rem;
+    position: relative;
     span {
         top: 10px;
     }
@@ -51,6 +74,7 @@ header p.nav {
 }
 
 /****** Boilerplaet *****/
+
 footer {
     margin-top: 6rem;
 }

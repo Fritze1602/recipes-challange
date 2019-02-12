@@ -1,25 +1,24 @@
-import {getRecipes} from './recipes'
-
 const isJson = (str) => {
     try {
-       JSON.parse(str)
+        JSON.parse(str)
     } catch (e) {
         return false
-    } 
+    }
     return true
 }
 
-const orderRecipesByName = () => {
-    let recipes = getRecipes()
-    recipes = recipes.sort((a, b)=>{
-       if ( a.name < b.name ) {
-           return -1
-       } 
-       if ( a.name > b.name ) {
-        return 1
-       }
-       return 0 
+// initialize Materialize Elements 
+const initializeMaterializeDropdown = () => {
+    document.addEventListener('DOMContentLoaded', function () {
+        const elems = document.querySelectorAll('.dropdown-trigger');
+        const instances = M.Dropdown.init(elems, { constrainWidth: false });
+    })
+}
+const initializeMaterializeSelect = () => {
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, {});
     })
 }
 
-export { isJson, orderRecipesByName } 
+export { isJson, initializeMaterializeDropdown, initializeMaterializeSelect } 
